@@ -118,8 +118,8 @@ curl `cat impressionURL`
 sleep 2
 #Code to launch WinLoss URL
 end=`cat $file|sed 's/^.*AUCTION_AD_ID}//'|sed 's/adm.*//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'`
-
-echo "https://uatwins.adtheorent.com/Wins?price=1" $end |awk '{print $1 $2}' > WinLossURL
+adid=`cat $file|sed 's/^.*"adid"//'|cut -d , -f1|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'`
+echo "https://uatwins.adtheorent.com/Wins?price=1&impId=1&adId=" $adid $end |awk '{print $1 $2 $3 }' > WinLossURL
 echo
 cat WinLossURL
 curl `cat WinLossURL`

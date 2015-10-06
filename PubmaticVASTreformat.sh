@@ -27,42 +27,46 @@ cat $file
 #read -p "Enter VAST filename: " file
 echo
 echo
-cat $file |cut -d : -f15- |cut -d "<" -f2-|awk '{ print "<" $0 }' | sed "s/\\\\\"/\"/g"|cut -d , -f1| sed s'/.$//' > Results/$file.VAST
-#cat $file |cut -d : -f15- |cut -d "<" -f2-|awk '{ print "<" $0 }' | sed "s/\\\\\"/\"/g"|cut -d , -f1| sed s'/.$//'
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" "https://developers.google.com/interactive-media-ads/docs/vastinspector_dual?hl=it" &
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" "https://developers.google.com/interactive-media-ads/docs/vastinspector_dual?hl=it" &
+cat $file |cut -d : -f11- |cut -d "<" -f2-|awk '{ print "<" $0 }' | sed "s/\\\\\"/\"/g"|cut -d , -f1| sed s'/.$//' > Results/$file.VAST
+cat $file |cut -d : -f11- |cut -d "<" -f2-|awk '{ print "<" $0 }' | sed "s/\\\\\"/\"/g"|cut -d , -f1| sed s'/.$//'
 
 #WebPage for comparing VAST
-crid=`cut -d ":" -f58 $file|cut -d " " -f1|sed s'/^.//'| sed s'/.$//'|sed s'/.$//'`
+AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&engine.*//'`
+CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
+StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
+LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
+CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CreativeID=" $crid "&SiteApp=SITE&AdExchange=Pubmatic" |awk '{print $1 $2 $3}' > url
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat url` &
 echo
-cat url
+echo
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+
 "/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat url` &
+cat url
 
 #Code to launch Impression URL
 cat $file |sed 's/^.*uatimps//' | sed 's/Impression.*//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|awk '{ print "https://uatimps" $0 }' > impressionURL
 sleep 2
 echo
 cat impressionURL
-#curl `cat impressionURL`
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat impressionURL`
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat impressionURL` &
+curl `cat impressionURL`
 sleep 2
 
 
 #Code to launch WinLoss URL
-body=`cut -d ":" -f18 $file |awk '{ print $1 }'|sed s'/.$//'|sed s'/.$//'|sed s'/Impression.*//'| sed 's/.*c_id//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'`
-price=`cut -d ":" -f7-7 $file |awk '{ print $1 }'|sed s'/.$//'`
-adid=`cut -d ":" -f13 $file |awk '{ print $1 }'|sed s'/.$//'|sed s'/.$//'|sed s'/^.//'`
-insert="&imp_id=1&ad_id="
-cid="&c_id"
+body=`cat $file|sed 's/^.*{AUCTION_ID}//'|cut -d ] -f1`
 echo
-echo "https://uatwins.adtheorent.com/WinLoss/Channels/AdExchanges/Generic?price=" $price $insert $adid $cid $body |awk '{ print $1 $2 $3 $4 $5 $6}' > WinLossURL &
+echo "https://uatwins.adtheorent.com/Wins?price=1&impId=1" $body |awk '{ print $1 $2 $3 }' > WinLossURL &
 sleep 2
 cat WinLossURL
-#curl  `cat WinLossURL`
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat WinLossURL`
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat WinLossURL`
-rm WinLossURL url impressionURL
+curl  `cat WinLossURL`
+
+
+#Code to launch Click URL
+cat $file |sed 's/^.*uatclicks//'|cut -d ] -f1 |awk '{print "https://uatclicks" $0 }' > ClickURL
+sleep 2
+echo
+cat ClickURL
+curl `cat ClickURL`
+rm WinLossURL url impressionURL ClickURL
+

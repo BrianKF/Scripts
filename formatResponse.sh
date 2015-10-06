@@ -54,11 +54,11 @@ then
 	./nexageReformat.sh $file
 else
 
-Pubmatic=$(grep Pubmatic $file)
+PubMatic=$(grep PubMatic $file)
 if [ $? -eq 0 ]
 then
         echo "Found Pubmatic VAST Response.  Using VAST Reformat script."
-	./PubmaticVASTreformat.sh $file
+	./PubMaticReformat.sh $file
 else
 
 Smaato=$(grep Smaato $file)
