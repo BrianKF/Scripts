@@ -71,7 +71,7 @@ echo
 #curl `cat WinLossURL`
 sleep 2
 #Extract ClickURL
-cat $file| sed 's/.*uatclicks//'|cut -d " " -f1|sed s'/.$//'|sed s'/.$//'|awk '{print "https://uatclicks" $1}' > ClickURL
+cat $file| sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|awk '{print "https://uatclicks" $1}' > ClickURL
 cat ClickURL
 curl `cat ClickURL`
 sleep 2

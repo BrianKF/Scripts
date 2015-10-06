@@ -57,7 +57,7 @@ sleep 2
 #Code to launch WinLoss URL
 body=`cat $file|sed 's/.*{market_ratio}//'|cut -d ] -f1`
 echo
-echo "https://uatwins.adtheorent.com/Wins?ratio=100000&price=10" $body |awk '{ print $1 $2 }' > WinLossURL &
+echo "https://uatwins.adtheorent.com/Wins?ratio=100000&" $body |awk '{ print $1 $2 }' > WinLossURL &
 sleep 2
 cat WinLossURL
 curl `cat WinLossURL`

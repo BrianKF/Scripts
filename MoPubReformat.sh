@@ -104,8 +104,6 @@ echo
 cat impressionURL
 #curl `cat impressionURL`
 
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat impressionURL` &
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat impressionURL` &
 
 sleep 2
 #Code to launch WinLoss URL
@@ -118,8 +116,6 @@ echo "https://uatwins.adtheorent.com/WinLoss/Channels/AdExchanges/Generic?price=
 echo
 cat WinLossURL
 #curl `cat WinLossURL`
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat WinLossURL` &
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat WinLossURL` &
 
 rm WinLossURL url impressionURL
 fi

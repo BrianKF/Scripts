@@ -126,7 +126,7 @@ else
 body=`cat $file|sed s'/.*winning_price}//'|cut -d " " -f1|sed s'/.$//'`
 echo
 echo
-echo "https://uatwins.adtheorent.com/Wins?price=AAABRm1HhpygTPspV8WEZTrnAbwEvBKxbS&impId=1&" $body |awk '{ print $1 $2 $3}' > WinLossURL
+echo "https://uatwins.adtheorent.com/Wins?price=AAABRm1HhpygTPspV8WEZTrnAbwEvBKxbS" $body |awk '{ print $1 $2 $3}' > WinLossURL
 cat WinLossURL
 curl `cat WinLossURL`
 

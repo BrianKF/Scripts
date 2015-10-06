@@ -45,13 +45,8 @@ echo
 echo
 cat launch.html
 "/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" ./launch.html &
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" ./launch.html &
 
 #WebPage for comparing Banner
-#crid=`cat $file |sed s'/.*crid//'|awk '{print $1}'|sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'|sed s'/.$//'`
-#AdExchange=`cat $file |sed s'/^.*adExchange=//' |sed s'/&engine.*//'`
-#sleep 2
-#echo "http://uatrtb.adtheorent.com:7070/?CreativeID=" $crid "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4}' > url
 AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&engine.*//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
 StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
@@ -63,7 +58,6 @@ echo
 echo
 cat url
 "/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat url` &
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat url` &
 
 #Code to launch Impression URL
 sleep 2
@@ -71,35 +65,31 @@ cat $file |sed 's/.*uatimps//'|awk '{print $1}'|sed s'/.$//' |awk '{ print "http
 echo
 echo
 cat impressionURL
-#curl `cat impressionURL`
+curl `cat impressionURL`
 
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat impressionURL` &
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat impressionURL` &
 
 sleep 2
 #Code to launch WinLoss URL
 head=`cat $file |sed 's/.*uatwins//'|sed 's/AUCTION.*//'|sed s'/.$//'|sed s'/.$//'|awk '{ print "https://uatwins" $0 }'`
-body=`cat $file |sed 's/.*cId//'|cut -d " " -f1|sed s'/.$//'`
-adid=`cat $file |sed 's/.*"adid"://'|cut -d , -f1|sed s'/.$//'|sed s'/^.//'`
-insert="1&impId=1&adId="
-cid="&cId"
-echo $head $insert $adid $cid $body |awk '{ print $1 $2 $3 $4 $5 $6 }' > WinLossURL
+body=`cat $file |sed s'/.*AUCTION_AD_ID}//'|cut -d , -f1|sed s'/.$//'`
+adid=`cat $file |sed 's/.*&adId//'|sed s'/&lId.*//'|sed s'/^.//'`
+echo
+echo "https://uatwins.adtheorent.com/Wins?price=1&impId=1&adId=" $adid $body |awk '{print $1 $2 $3}' > WinLossURL
+
 echo
 echo
 cat WinLossURL
-#curl `cat WinLossURL`
-#"/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat WinLossURL` &
-#"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat WinLossURL` &
+curl `cat WinLossURL`
 
 sleep 5
 
 #Extract ClickURL
 
-cat $file |sed 's/.*uatclicks//'|cut -d " " -f1|sed s'/.$//' |sed s'/.$//'|awk '{print "http://uatclicks" $1}' > clickURL
+cat $file |sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|awk '{print "http://uatclicks" $1}' > clickURL
 echo
 echo
 cat clickURL
-#curl `cat clickURL`
+curl `cat clickURL`
 sleep 2
 rm WinLossURL launch.html url impressionURL clickURL
 

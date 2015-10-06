@@ -60,7 +60,7 @@ cat $file |sed 's/^.*uatimps//' | sed 's/Impression.*//'|sed s'/.$//'|sed s'/.$/
 sleep 2
 cat impressionURL
 echo
-#curl `cat impressionURL`
+curl `cat impressionURL`
 sleep 2
 
 #Code to launch WinLoss URL
@@ -71,7 +71,7 @@ adid=`cat $file |sed 's/.*adid//'|cut -d , -f1|sed s'/^.//'|sed s'/^.//'|sed s'/
 echo "http://uatwins.adtheorent.com/Wins?price=1" $insert $adid $body |awk '{ print $1 $2 $3 $4 $5}' > WinLossURL
 sleep 2
 cat WinLossURL
-#curl `cat WinLossURL`
+curl `cat WinLossURL`
 sleep 2
 
 #Extract ClickUrl
@@ -79,7 +79,7 @@ cat $file|sed 's/^.*uatclicks//'|cut -d ] -f1 |awk '{print "https://uatclicks" $
 echo
 echo
 cat ClickURL
-#curl `cat ClickURL`
+curl `cat ClickURL`
 rm WinLossURL url impressionURL ClickURL
 sleep 2
 
