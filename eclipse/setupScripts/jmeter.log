@@ -1,0 +1,64 @@
+2015/06/04 14:50:18 INFO  - jmeter.util.JMeterUtils: Setting Locale to en_US 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Loading user properties from: C:\Users\Manish\Documents\apache-jmeter-2.12\bin\user.properties 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Loading system properties from: C:\Users\Manish\Documents\apache-jmeter-2.12\bin\system.properties 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Copyright (c) 1998-2014 The Apache Software Foundation 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Version 2.12 r1636949 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: java.version=1.8.0_31 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: os.name=Windows 7 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: os.arch=amd64 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: os.version=6.1 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: file.encoding=Cp1252 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Default Locale=English (United States) 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: JMeter  Locale=English (United States) 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: JMeterHome=C:\Users\Manish\Documents\apache-jmeter-2.12 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: user.dir  =C:\Users\Manish\workspace\setupScripts 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: PWD       =C:\Users\Manish\workspace\setupScripts 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: IP: 172.27.240.241 Name: Brian-HP FullName: Brian-HP 
+2015/06/04 14:50:18 INFO  - jmeter.services.FileServer: Default base='C:\Users\Manish\workspace\setupScripts' 
+2015/06/04 14:50:18 INFO  - jmeter.services.FileServer: Set new base='C:\Users\Manish\Desktop\WorkSpace\RegressionTesting\Demographics\JmeterTestPlans' 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Loading file: C:\Users\Manish\Desktop\WorkSpace\RegressionTesting\Demographics\JmeterTestPlans\DemographicsMoPubAgeMinus1.jmx 
+2015/06/04 14:50:18 INFO  - jmeter.save.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2 
+2015/06/04 14:50:18 INFO  - jmeter.save.SaveService: Using SaveService properties file encoding UTF-8 
+2015/06/04 14:50:18 INFO  - jmeter.save.SaveService: Using SaveService properties version 2.7 
+2015/06/04 14:50:18 INFO  - jmeter.save.SaveService: Using SaveService properties file version 1618048 
+2015/06/04 14:50:18 INFO  - jmeter.save.SaveService: All converter versions present and correct 
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Cannot find .className property for htmlParser, using default 
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/html is  
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xhtml+xml is  
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xml is  
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/xml is  
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Creating summariser <summary> 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: Listeners will be started after enabling running version 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: To revert to the earlier behaviour, define jmeterengine.startlistenerslater=false 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: Running the test! 
+2015/06/04 14:50:18 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2015/06/04 14:50:18 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2015/06/04 14:50:18 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must contain the string: '.functions.' 
+2015/06/04 14:50:18 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must not contain the string: '.gui.' 
+2015/06/04 14:50:18 INFO  - jmeter.JMeter: Running test (1433443818863) 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: Starting ThreadGroup: 1 : MoPub 2.1 Bid Requests - Banner 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: Starting 1 threads for group MoPub 2.1 Bid Requests - Banner. 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: Thread will continue on error 
+2015/06/04 14:50:18 INFO  - jmeter.threads.ThreadGroup: Starting thread group number 1 threads 1 ramp-up 0 perThread 0.0 delayedStart=false 
+2015/06/04 14:50:18 INFO  - jmeter.threads.JMeterThread: jmeterthread.startearlier=true (see jmeter.properties) 
+2015/06/04 14:50:18 INFO  - jmeter.threads.JMeterThread: Running PostProcessors in forward order 
+2015/06/04 14:50:18 INFO  - jmeter.threads.ThreadGroup: Started thread group number 1 
+2015/06/04 14:50:18 INFO  - jmeter.engine.StandardJMeterEngine: All thread groups have been started 
+2015/06/04 14:50:18 INFO  - jmeter.threads.JMeterThread: Thread started: MoPub 2.1 Bid Requests - Banner 1-1 
+2015/06/04 14:50:18 INFO  - jmeter.services.FileServer: Stored: C:\Users\Manish\Desktop\WorkSpace\RegressionTesting\Demographics\Requests\Mopub_AgeMinus1.csv Alias: C:\Users\Manish\Desktop\WorkSpace\RegressionTesting\Demographics\Requests\Mopub_AgeMinus1.csv@1386883398 
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPHCAbstractImpl: Local host = Brian-HP 
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: HTTP request retry count = 0 
+2015/06/04 14:50:18 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: Setting up HTTPS TrustAll scheme 
+2015/06/04 14:50:18 INFO  - jmeter.util.JsseSSLManager: Using default SSL protocol: TLS 
+2015/06/04 14:50:18 INFO  - jmeter.util.JsseSSLManager: SSL session context: per-thread 
+2015/06/04 14:50:19 INFO  - jmeter.samplers.SampleResult: Note: Sample TimeStamps are START times 
+2015/06/04 14:50:19 INFO  - jmeter.samplers.SampleResult: sampleresult.default.encoding is set to ISO-8859-1 
+2015/06/04 14:50:19 INFO  - jmeter.samplers.SampleResult: sampleresult.useNanoTime=true 
+2015/06/04 14:50:19 INFO  - jmeter.samplers.SampleResult: sampleresult.nanoThreadSleep=5000 
+2015/06/04 14:50:19 INFO  - jmeter.threads.JMeterThread: Stop Thread seen: org.apache.jorphan.util.JMeterStopThreadException: End of file detected 
+2015/06/04 14:50:19 INFO  - jmeter.threads.JMeterThread: Thread finished: MoPub 2.1 Bid Requests - Banner 1-1 
+2015/06/04 14:50:19 INFO  - jmeter.engine.StandardJMeterEngine: Notifying test listeners of end of test 
+2015/06/04 14:50:19 INFO  - jmeter.services.FileServer: Close: C:\Users\Manish\Desktop\WorkSpace\RegressionTesting\Demographics\Requests\Mopub_AgeMinus1.csv@1386883398 
+2015/06/04 14:50:19 INFO  - jmeter.reporters.Summariser: summary =      1 in   0.3s =    3.6/s Avg:   277 Min:   277 Max:   277 Err:     0 (0.00%) 
