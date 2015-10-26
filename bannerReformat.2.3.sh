@@ -21,22 +21,12 @@
 echo
 file=$1
 
-
-grep imptrackers $file
-if  [ $? -eq 0 ]
-    then
-echo
-echo
-./bannerReformat.2.3.sh $file
-
-else
-
 grep native $file
 if  [ $? -eq 0 ]
     then
 echo
 echo
-./MoPubReformat.sh $file
+./MoPubReformat.2.3.sh $file
 
 else
 
@@ -46,7 +36,7 @@ if  [ $? -eq 0 ]
 echo
 echo
 echo "This is a VAST file.  Using VAST Formant Script"
-./VASTreformat.sh $file
+./VASTreformat.2.3.sh $file
 
 else
 
@@ -83,7 +73,7 @@ cat url
 
 #Code to launch Impression URL
 sleep 2
-cat $file| sed 's/^.*uatimps//' |awk '{print $1}'|sed s'/.$//' |awk '{ print "https://uatimps" $0 }' > impressionURL
+cat $file|sed 's/^.*uatimps//' |cut -d ] -f1|sed s'/.$//'|awk '{print $1}' |awk '{ print "https://uatimps" $0 }' > impressionURL
 echo
 echo
 cat impressionURL
@@ -110,6 +100,5 @@ curl `cat clickURL`
 
 rm WinLossURL launch.html url impressionURL clickURL
 
-fi
 fi
 fi
