@@ -21,39 +21,6 @@
 echo
 file=$1
 
-grep VAST $file
-if  [ $? -eq 0 ]
-    then
-
-echo "Found PubMatic VAST.  Using PubMaticVAST reformat script"
-echo
-echo
-
-./PubMaticVASTreformat.sh $file
-
-echo
-echo
-
-else
-
-grep celtra.com $file
-if  [ $? -eq 0 ]
-    then
-echo
-echo
-echo "Found PubMatic RM"
-echo
-echo
-
-./PubMaticBannerRM.sh $file
-
-else
-
-echo "Found PubMatic banner."
-echo
-echo
-
-
 cat $file
 
 #Code to launch Banner and Marup for comparison
@@ -86,7 +53,7 @@ cat $file| sed 's/^.*uatimps//' |awk '{print $1}'|sed s'/.$//' |awk '{ print "ht
 echo
 echo
 cat impressionURL
-#curl `cat impressionURL`
+curl `cat impressionURL`
 
 sleep 2
 #Code to launch WinLoss URL
@@ -97,17 +64,15 @@ echo "https://uatwins.adtheorent.com/Wins?price=1" $insert $adid $body |awk '{ p
 echo
 echo
 cat WinLossURL
-#curl `cat WinLossURL`
+curl `cat WinLossURL`
 
 sleep 2
 
 #extract ClickURL
-cat $file|sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|sed s'/.$//'|awk '{print "https://uatclicks" $1}'|sed s'/.$//' > clickURL
+cat $file|sed 's/.*uatclicks//'|sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|sed s'/.$//'|cut -d " " -f1|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|awk '{print "https://uatclicks" $1}' > clickURL
 echo
 cat clickURL
-#curl `cat clickURL`
+curl `cat clickURL`
 
 rm WinLossURL launch.html url impressionURL clickURL
 
-fi
-fi

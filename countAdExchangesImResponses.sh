@@ -18,7 +18,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-Pub=`grep Pub SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
+Pub=`grep PubMatic SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
 MoP=`grep MoPub SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
 Nex=`grep Nexage SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
 Live=`grep Live SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`

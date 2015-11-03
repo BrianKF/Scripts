@@ -37,7 +37,7 @@ StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
 LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
 CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 rm url
 
 #Strip WinLoss URL
@@ -91,7 +91,7 @@ StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
 LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
 CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 rm url
 cat url
 "/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat url` &

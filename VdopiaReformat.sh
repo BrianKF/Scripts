@@ -32,7 +32,7 @@ cat $file
 
 echo
 echo
-echo "Capture this text, and past in the VAST viewer."
+echo "Capture this text, and paste in the VAST viewer."
 echo
 cat $file |sed 's/.*"adm"//'|sed 's/"adomain".*//'|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'|sed s'/.$//'| sed "s/\\\\\"/\"/g" > Results/$file.VAST
 cat $file |sed 's/.*"adm"//'|sed 's/"adomain".*//'|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'|sed s'/.$//'| sed "s/\\\\\"/\"/g" 
@@ -51,7 +51,7 @@ StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
 LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
 CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 echo
 echo
 cat url
@@ -124,7 +124,7 @@ StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
 LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
 CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 
 cat url
 
