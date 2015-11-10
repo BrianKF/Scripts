@@ -59,7 +59,7 @@ sleep 2
 body=`cat $file|sed s'/.*winning_price//'|cut -d " " -f1|sed s'/.$//'|sed s'/^.//'`
 echo
 echo
-echo "https://uatwins.adtheorent.com/WinLoss/Channels/AdExchanges/OpenX?price=AAABRm1HhpygTPspV8WEZTrnAbwEvBKxbS" $body |awk '{print $1 $2}' > WinLossURL &
+echo "https://uatwins.adtheorent.com/WinLoss/Channels/AdExchanges/OpenX?price=AAABRm1HY3gQULKaLb4ibNY1V5bnHvy7BtEArA" $body |awk '{print $1 $2}' > WinLossURL &
 sleep 5
 cat WinLossURL
 curl `cat WinLossURL`
@@ -115,7 +115,7 @@ if  [ $? -eq 0 ]
 body=`cat $file|sed s'/.*AUCTION_ID}//'|cut -d " " -f1|sed s'/.$//'`
 echo
 echo
-echo "https://uatwins.adtheorent.com/Wins?price=AAABRm1HhpygTPspV8WEZTrnAbwEvBKxbS&impId=1&" $body |awk '{ print $1 $2 $3}' > WinLossURL
+echo "https://uatwins.adtheorent.com/Wins?price=AAABRm1HY3gQULKaLb4ibNY1V5bnHvy7BtEArA&impId=1&" $body |awk '{ print $1 $2 $3}' > WinLossURL
 cat WinLossURL
 curl `cat WinLossURL`
 
@@ -126,7 +126,7 @@ else
 body=`cat $file|sed s'/.*winning_price}//'|cut -d " " -f1|sed s'/.$//'`
 echo
 echo
-echo "https://uatwins.adtheorent.com/Wins?price=AAABRm1HhpygTPspV8WEZTrnAbwEvBKxbS" $body |awk '{ print $1 $2 $3}' > WinLossURL
+echo "https://uatwins.adtheorent.com/Wins?price=AAABRm1HY3gQULKaLb4ibNY1V5bnHvy7BtEArA" $body |awk '{ print $1 $2 $3}' > WinLossURL
 cat WinLossURL
 curl `cat WinLossURL`
 

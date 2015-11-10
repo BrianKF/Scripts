@@ -68,7 +68,7 @@ curl `cat impressionURL`
 body=`cat $file|sed 's/.*{AUCTION_ID}//'|cut -d " " -f1|sed s'/.$//'|sed s'/.$//'`
 insert="&impId=1"
 echo
-echo "https://uatwins.adtheorent.com/Wins?price=7B41A0380FCBC50F" $insert $body |awk '{ print $1 $2 $3 }' > WinLossURL
+echo "https://uatwins.adtheorent.com/Wins?price=64CC01617983C7DB" $insert $body |awk '{ print $1 $2 $3 }' > WinLossURL
 cat WinLossURL
 echo
 echo
@@ -88,7 +88,7 @@ else
 body=`cat $file|sed 's/.*{AUCTION_ID}//'|cut -d " " -f1|sed s'/.$//'|sed s'/.$//'`
 insert="&impId=1"
 echo
-echo "https://uatwins.adtheorent.com/Wins?price=7B41A0380FCBC50F" $insert $body |awk '{ print $1 $2 $3 }' > WinLossURL
+echo "https://uatwins.adtheorent.com/Wins?price=64CC01617983C7DB" $insert $body |awk '{ print $1 $2 $3 }' > WinLossURL
 cat WinLossURL
 #curl `cat WinLossURL`
 echo
