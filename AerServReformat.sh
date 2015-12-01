@@ -37,11 +37,11 @@ cat $file |sed 's/.*"adm"//'|sed 's/"cid".*//'|sed s'/.$//'|sed s'/.$//'|sed s'/
 #"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" "https://developers.google.com/interactive-media-ads/docs/vastinspector_dual?hl=it" &
 
 #WebPage for comparing VAST
-AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&engine.*//'`
+AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&action.*//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
-StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
-LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
-CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
+StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/lId.*//'`
+LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/cId.*//'`
+CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/adExchange.*//'`
 sleep 2
 echo
 echo
