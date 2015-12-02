@@ -50,22 +50,22 @@ echo "13. Vdopia" $Vdop
 echo "14. TripleLift" $Trip
 echo "15. OpenX" $Ope
 
-printf "Enter number to see a list of the response files containing the associated adExchange: "
-read p
+#printf "Enter number to see a list of the response files containing the associated adExchange: "
+#read p
 
-case $p in
+#case $p in
 
-1)
-echo "You picked 1"
-search=`grep Pub SanityTestin* |awk '{print $1}'|cut -d : -f1`
-cat $search
-;;
+#1)
+#echo "You picked 1"
+#search=`grep Pub SanityTestin* |awk '{print $1}'|cut -d : -f1`
+#cat $search
+#;;
 
-2)
-echo "You picked 2"
-;;
+#2)
+#echo "You picked 2"
+#;;
 
-*)
-;;
+#*)
+#;;
 
-esac
+#esac

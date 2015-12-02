@@ -118,6 +118,15 @@ then
 echo "Found Vdopia Response.  Using Vdopia Reformat script."
 	./VdopiaReformat.sh $file
 
+else
+
+LKQD=$(grep LKQD $file)
+if [ $? -eq 0 ]
+then
+echo "Found LKQD Response.  Using Vdopia Reformat script."
+	./LKQDReformat.sh $file
+
+fi
 fi
 fi
 fi
