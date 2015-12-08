@@ -70,7 +70,7 @@ sleep 2
 #Extract ClicksURL
 echo
 echo
-cat $file|sed s'/^.*uatclicks//'|cut -d " " -f1|sed s'/.$//'|sed s'/.$//'|awk '{print "https://uatclicks" $1}' > ClicksURL
+cat $file|sed s'/^.*uatclicks//'|cut -d , -f1|sed s'/.$//'|awk '{print "https://uatclicks" $1}' > ClicksURL
 cat ClicksURL
 curl `cat ClicksURL`
 sleep 2

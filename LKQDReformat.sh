@@ -36,7 +36,7 @@ StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/lId.*//'`
 LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/cId.*//'`
 CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/adExchange.*//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 echo
 echo
 cat url

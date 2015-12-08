@@ -53,11 +53,10 @@ sleep 2
 
 #Code to launch WinLoss URL
 body=`cat $file |sed 's/^.*AUCTION_AD_ID}//'|cut -d , -f1 |sed 's/adm.*//'|sed s'/.$//'`
-adid=`cut -d ":" -f13 $file |awk '{ print $1 }'|sed s'/.$//'|sed s'/.$//'|sed s'/^.//'`
-insert="&impId=1&adId="
+adid=`cat $file |sed 's/^.*adid//'|cut -d , -f1|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/^.//'`
 echo
 echo
-echo "https://uatwins.adtheorent.com/Wins?price=1" $insert $adid $body |awk '{ print $1 $2 $3 $4}' > WinLossURL
+echo "https://uatwins.adtheorent.com/Wins?price=1&impId=1&adId=" $adid $body |awk '{ print $1 $2 $3 }' > WinLossURL
 cat WinLossURL
 curl `cat WinLossURL`
 sleep 2

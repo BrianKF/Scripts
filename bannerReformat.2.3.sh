@@ -35,13 +35,13 @@ if  [ $? -eq 0 ]
     then
 echo
 echo
-echo "This is a VAST file.  Using VAST Formant Script"
+echo "This is a VAST file.  Using VAST 2.3 Formant Script"
 ./VASTreformat.2.3.sh $file
 
 else
 
 echo
-echo "Using the banner Response file:"
+echo "Using the banner 2.3 Response file:"
 echo
 echo
 cat $file

@@ -45,7 +45,7 @@ if  [ $? -eq 0 ]
     then
 echo
 echo
-echo "This is a VAST file.  Using VAST Formant Script"
+echo "This is a VAST file.  Using VAST Format Script"
 ./VASTreformat.sh $file
 
 else

@@ -54,7 +54,7 @@ sleep 2
 
 #Code to launch WinLoss URL
 body=`cat $file |sed 's/^.*AUCTION_AD_ID}//'|cut -d , -f1 |sed 's/adm.*//'|sed s'/.$//'`
-adid=`cut -d ":" -f13 $file |awk '{ print $1 }'|sed s'/.$//'|sed s'/.$//'|sed s'/^.//'`
+adid=`cat $file |sed 's/^.*adid//'|cut -d , -f1|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/^.//'`
 insert="&impId=1&adId="
 echo
 echo
