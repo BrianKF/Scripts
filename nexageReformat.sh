@@ -47,13 +47,13 @@ cat launch.html
 "/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" ./launch.html &
 
 #WebPage for comparing Banner
-AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&engine.*//'`
+AdExchange=`cat $file |sed 's/^.*adExchange=//' |sed s'/engine.*//'|sed s'/.$//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
-StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
-LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
-CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
+StrategyID=`cat $file |sed 's/^.*sId//'|sed 's/cId.*//'|sed s'/.$//'`
+LineItemID=`cat $file |sed 's/^.*lId//'|sed 's/sId.*//'|sed s'/.$//'`
+CampaignID=`cat $file |sed 's/^.*cId//'|sed 's/crId.*//'|sed s'/.$//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "&StrategyID" $StrategyID "&LineItemID" $LineItemID "&CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 echo
 echo
 cat url
@@ -70,9 +70,8 @@ curl `cat impressionURL`
 
 sleep 2
 #Code to launch WinLoss URL
-head=`cat $file |sed 's/.*uatwins//'|sed 's/AUCTION.*//'|sed s'/.$//'|sed s'/.$//'|awk '{ print "https://uatwins" $0 }'`
-body=`cat $file |sed s'/.*AUCTION_AD_ID}//'|cut -d , -f1|sed s'/.$//'`
-adid=`cat $file |sed 's/.*&adId//'|sed s'/&lId.*//'|sed s'/^.//'`
+body=`cat $file |sed s'/.*AUCTION_AD_ID}//'|cut -d " " -f1|sed s'/.$//'`
+adid=`cat $file |sed 's/.*adid//'|cut -d , -f1|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/^.//'`
 echo
 echo "https://uatwins.adtheorent.com/Wins?price=1&impId=1&adId=" $adid $body |awk '{print $1 $2 $3}' > WinLossURL
 
@@ -85,7 +84,7 @@ sleep 5
 
 #Extract ClickURL
 
-cat $file |sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|awk '{print "http://uatclicks" $1}' > clickURL
+cat $file |sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|awk '{print "http://uatclicks" $1}'|sed s'/.$//' > clickURL
 echo
 echo
 cat clickURL
