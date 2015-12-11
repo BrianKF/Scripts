@@ -32,13 +32,13 @@ cat launch.html
 "/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" ./launch.html &
 
 #WebPage for comparing Banner
-AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&adId.*//'`
+AdExchange=`cat $file |sed s'/^.*adExchange=//' |sed s'/impId.*//'|sed s'/.$//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
-StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
-LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
-CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
+StrategyID=`cat $file |sed 's/^.*sId//'|sed 's/cId.*//'|sed s'/.$//'`
+LineItemID=`cat $file |sed 's/^.*lId//'|sed 's/sId.*//'|sed s'/.$//'`
+CampaignID=`cat $file |sed 's/^.*cId//'|sed 's/crId.*//'|sed s'/.$//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "&StrategyID" $StrategyID "&LineItemID" $LineItemID "&CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 sleep 2
 #echo "http://uatrtb.adtheorent.com:7070/?CreativeID=" $crid "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4}' > url
 echo
@@ -68,11 +68,10 @@ curl `cat WinLossURL`
 
 sleep 2
 
-#extract ClickURL
+# extract ClickURL
 cat $file|sed 's/.*uatclicks//'|sed 's/.*uatclicks//'|cut -d , -f1|sed s'/.$//'|sed s'/.$//'|cut -d " " -f1|sed s'/.$//'|sed s'/.$//'|sed s'/.$//'|awk '{print "https://uatclicks" $1}' > clickURL
 echo
 cat clickURL
 curl `cat clickURL`
 
 rm WinLossURL launch.html url impressionURL clickURL
-

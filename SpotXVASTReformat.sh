@@ -34,13 +34,13 @@ echo
 echo
 #WebPage for comparing VAST
 #crid=`cat $file |sed 's/.*crid//'|awk '{print $1}'|sed s'/.$//'|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/^.//'`
-AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&action.*//'`
+AdExchange=`cat $file |sed s'/^.*adExchange=//' |sed s'/action.*//'|sed s'/.$//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
-StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/lId.*//'`
-LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/cId.*//'`
-CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/&adExchange.*//'`
+StrategyID=`cat $file |sed 's/^.*sId//'|sed 's/lId.*//'|sed s'/.$//'`
+LineItemID=`cat $file |sed 's/^.*lId//'|sed 's/cId.*//'|sed s'/.$//'`
+CampaignID=`cat $file |sed 's/^.*cId//'|sed 's/adExchange.*//'|sed s'/.$//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "&StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "&StrategyID" $StrategyID "&LineItemID" $LineItemID "&CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 cat url
 #"/cygdrive/c/Program Files (x86)/Mozilla Firefox/firefox.exe" `cat url` &
 "/cygdrive/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" `cat url` &
@@ -54,7 +54,7 @@ curl `cat impressionURL`
 echo
 
 #Code to launch WinLoss URL
-body=`cat $file |sed 's/.*$MBR&//'|cut -d ] -f1`
+body=`cat $file |sed 's/.*$MBR//'|cut -d ] -f1`
 sleep 2
 echo "https://uatwins.adtheorent.com/Wins?ratio=1000&" $body |awk '{ print $1 $2 }' > WinLossURL &
 cat WinLossURL

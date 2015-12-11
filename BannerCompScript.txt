@@ -7,3 +7,4 @@ CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
 sleep 2
 echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&adExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 
+cat SanityTesting_20151118-1524_1.json |sed s'/^.*&adExchange=//' |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'
