@@ -80,8 +80,6 @@ rm ClickTrakerURL
 
 
 
-
-
 else
 
 echo "Using the Response file:"
@@ -123,4 +121,5 @@ cat WinLossURL
 #curl `cat WinLossURL`
 
 rm WinLossURL url impressionURL
+
 fi

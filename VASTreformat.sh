@@ -73,3 +73,4 @@ curl `cat ClickURL`
 sleep 2
 
 rm WinLossURL impressionURL url ClickURL
+

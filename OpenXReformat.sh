@@ -34,6 +34,7 @@ echo
 echo
 cat $file |cut -d : -f15- |cut -d "<" -f2-|awk '{ print "<" $0 }' | sed "s/\\\\\"/\"/g"|cut -d , -f1| sed s'/.$//' > Results/$file.VAST.xml
 
+
 #WebPage for comparing VAST
 AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&engine.*//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
@@ -137,6 +138,7 @@ cat ClickURL
 curl `cat ClickURL`
 sleep 2
 rm launch.html WinLossURL url impressionURL ClickURL
+
 
 fi
 fi

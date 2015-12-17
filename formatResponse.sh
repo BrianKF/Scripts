@@ -19,6 +19,34 @@
 #===============================================================================
 file=$1
 
+echo
+
+echo
+echo "Validating for Json correctness."
+echo
+
+jsonlint $file > jsonResults
+exitCode=$?
+
+echo "Exit Code: "$exitCode
+echo
+
+case $exitCode in
+[0]*)
+echo "This is a VALID json file."
+  ;;
+
+[1]*)
+echo "This is an INVALID json file!!!!  Please investigate!"
+exit 0
+;;
+esac
+
+
+echo
+echo
+sleep 5
+
 TripleLift=$(grep TripleLift $file)
 if [ $? -eq 0 ]
     then

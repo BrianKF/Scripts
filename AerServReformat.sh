@@ -79,6 +79,7 @@ sleep 2
 
 rm WinLossURL impressionURL url clickURL
 
+
 else
 
 echo
@@ -132,5 +133,7 @@ curl `cat clickURL`
 echo
 
 rm launch.html url impressionURL WinLossURL clickURL
+
+
 fi
 

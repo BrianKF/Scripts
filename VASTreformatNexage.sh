@@ -24,6 +24,7 @@ echo
 echo
 cat $file
 
+
 echo
 echo
 cat $file |sed 's/.*"adm"//'|sed 's/"adomain".*//'|sed s'/.$//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'|sed s'/.$//'| sed "s/\\\\\"/\"/g" > Results/$file.VAST

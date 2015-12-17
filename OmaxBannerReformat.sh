@@ -75,3 +75,4 @@ cat ClicksURL
 curl `cat ClicksURL`
 sleep 2
 rm WinLossURL launch.html url impressionURL ClicksURL
+

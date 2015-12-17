@@ -101,5 +101,6 @@ curl `cat ClickURL`
 sleep 2
 rm WinLossURL launch.html url impressionURL ClickURL
 
+
 #fi
 #fi
