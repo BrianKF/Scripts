@@ -42,6 +42,7 @@ exit 0
 ;;
 esac
 
+rm jsonResults
 
 echo
 echo

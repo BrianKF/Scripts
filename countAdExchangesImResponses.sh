@@ -32,6 +32,7 @@ Spot=`grep Spot SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'
 Vdop=`grep Vdop SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
 Trip=`grep Trip SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
 Ope=`grep Ope SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
+LKQ=`grep LKQ SanityTestin* |awk '{print $1}'|cut -d : -f1|wc|awk '{print $1}'`
 
 echo
 echo
@@ -49,23 +50,5 @@ echo "12. SpotX" $Spot
 echo "13. Vdopia" $Vdop
 echo "14. TripleLift" $Trip
 echo "15. OpenX" $Ope
+echo "16. LKQD" $LKQ
 
-#printf "Enter number to see a list of the response files containing the associated adExchange: "
-#read p
-
-#case $p in
-
-#1)
-#echo "You picked 1"
-#search=`grep Pub SanityTestin* |awk '{print $1}'|cut -d : -f1`
-#cat $search
-#;;
-
-#2)
-#echo "You picked 2"
-#;;
-
-#*)
-#;;
-
-#esac
