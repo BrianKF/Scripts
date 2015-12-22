@@ -46,7 +46,7 @@ rm jsonResults
 
 echo
 echo
-sleep 5
+sleep 2
 
 TripleLift=$(grep TripleLift $file)
 if [ $? -eq 0 ]
@@ -155,6 +155,14 @@ then
 echo "Found LKQD Response.  Using Vdopia Reformat script."
 	./LKQDReformat.sh $file
 
+else
+
+AdX=$(grep AdX $file)
+if [ $? -eq 0 ]
+then
+	./AdXReformat.sh $file
+
+fi
 fi
 fi
 fi

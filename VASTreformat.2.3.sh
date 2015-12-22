@@ -31,13 +31,13 @@ cat $file |sed 's/.*"adm"//'|sed 's/"adomain".*//'|sed s'/^.//'|sed s'/^.//'|sed
 cat $file |sed 's/.*"adm"//'|sed 's/"adomain".*//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'|sed s'/.$//'| sed "s/\\\\\"/\"/g"
 
 #WebPage for comparing VAST
-AdExchange=`cat $file |sed s'/^.*&adExchange=//' |sed s'/&engine.*//'`
+AdExchange=`cat $file |sed s'/^.*adExchange=//' |sed s'/engine.*//'|sed s'/.$//'`
 CreativeID=`cat $file |sed 's/.*crid//'|cut -d , -f1 |sed s'/^.//'|sed s'/^.//'|sed s'/^.//'|sed s'/.$//'`
-StrategyID=`cat $file |sed 's/^.*&sId//'|sed 's/cId.*//'`
-LineItemID=`cat $file |sed 's/^.*&lId//'|sed 's/sId.*//'`
-CampaignID=`cat $file |sed 's/^.*&cId//'|sed 's/crId.*//'`
+StrategyID=`cat $file |sed 's/^.*sId//'|sed 's/cId.*//'|sed s'/.$//'`
+LineItemID=`cat $file |sed 's/^.*lId//'|sed 's/sId.*//'|sed s'/.$//'`
+CampaignID=`cat $file |sed 's/^.*cId//'|sed 's/crId.*//'|sed s'/.$//'`
 sleep 2
-echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "StrategyID" $StrategyID "LineItemID" $LineItemID "CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
+echo "http://uatrtb.adtheorent.com:7070/?CampaignID" $CampaignID "&StrategyID" $StrategyID "&LineItemID" $LineItemID "&CreativeID=" $CreativeID "&SiteApp=SITE&AdExchange=" $AdExchange |awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}' > url
 echo
 echo
 cat url

@@ -21,7 +21,7 @@
 #cd /cygdrive/c/Users/Manish/Desktop/WorkSpace/Scripts/Jmeter/test/
 
 
-JmeterScriptdir=/cygdrive/c/Users/Manish/Desktop/WorkSpace/Scripts/Jmeter/Scripts
+#JmeterScriptdir="/cygdrive/c/Documents and Settings/Manish/Desktop/WorkSpace/Scripts"
 
 #cd Jmeter/files
 #count=`ls -ltr San* | awk '{ print $9 }'`
@@ -35,7 +35,7 @@ read -p "I found $total responses and will launch all impressions.  Are you sure
 
 
 #responses=`ls -ltr Sanit* | awk '{ print $9 }'`
-ls -ltr Sanit* | awk '{ print $9 }' > responses
+ls -ltr Sanit* | awk '{ print $9 }' > newresponses
 
 while read line
 do
@@ -43,43 +43,43 @@ do
 TripleLift=$(grep TripleLift $line)
 if [ $? -eq 0 ]
     then
-        echo "Found TripleLift Response.  Using LiveRail Reformat script."
-        $JmeterScriptdir/TripleLiftReformat.sh $line
+        echo "Found TripleLift Response.  Using TripleLift Reformat script."
+        ./TripleLiftReformat.sh $line
 else
 
 LiveRail=$(grep LiveRail $line)
 if [ $? -eq 0 ]
     then
         echo "Found LiveRail Response.  Using LiveRail Reformat script."
-        $JmeterScriptdir/VASTreformatLiveRail.sh $line
+        ./VASTreformatLiveRail.sh $line
 else
 
 AerServ=$(grep AerServ $line)
 if [ $? -eq 0 ]
     then
         echo "Found AerServ Response.  Using AerServ Reformat script."
-        $JmeterScriptdir/AerServReformat.sh $line
+        ./AerServReformat.sh $line
 else
 
 Amobee=$(grep Amobee $line)
 if [ $? -eq 0 ]
     then
         echo "Found Amobee Response.  Using Banner Reformat script."
-        $JmeterScriptdir/AmobeeBannerReformat.sh $line
+        ./AmobeeReformat.sh $line
 else
 
 Nexage=$(grep Nexage $line)
 if [ $? -eq 0 ]
 then
         echo "Found Nexage Response.  Using banner Reformat script."
-        $JmeterScriptdir/nexageReformat.sh $line
+        ./nexageReformat.sh $line
 else
 
-Pubmatic=$(grep Pubmatic $line)
+PubMatic=$(grep PubMatic $line)
 if [ $? -eq 0 ]
 then
         echo "Found Pubmatic VAST Response.  Using VAST Reformat script."
-        $JmeterScriptdir/PubmaticVASTreformat.sh $line
+        ./PubMaticReformat.sh $line
 else
 
 Smaato=$(grep Smaato $line)
@@ -87,56 +87,72 @@ if [ $? -eq 0 ]
 then
         echo
         echo "Found Smaato Response.  Using Smaato Reformat script."
-        $JmeterScriptdir/SmaatoReformat.sh $line
+        ./SmaatoReformat.sh $line
 else
 
 Adaptv=$(grep Adaptv $line)
 if [ $? -eq 0 ]
 then
         echo "Found Adaptv VAST Response.  Using Adaptv VAST Reformat script."
-        $JmeterScriptdir/AdaptvVASTreformat.sh $line
+        ./AdaptvVASTreformat.sh $line
 else
 
 SpotX=$(grep SpotX $line)
 if [ $? -eq 0 ]
 then
         echo "Found SpotX VAST Response.  Using SpotX VAST Reformat script."
-        $JmeterScriptdir/SpotXVASTReformat.sh $line
+        ./SpotXVASTReformat.sh $line
 else
+
 
 MoPub=$(grep MoPub $line)
 if [ $? -eq 0 ]
 then
         echo "Found MoPub Response.  Using Banner Reformat script."
-        $JmeterScriptdir/bannerReformat.sh $line
+        ./bannerReformat.sh $line
 else
 
 OMAX=$(grep OMAX $line)
 if [ $? -eq 0 ]
 then
         echo "Found OMAX Response.  Using Banner Reformat script."
-        $JmeterScriptdir/OmaxBannerReformat.sh $line
+        ./OmaxReformat.sh $line
 else
 
 Rubicon=$(grep Rubicon $line)
 if [ $? -eq 0 ]
 then
         echo "Found Rubicon Response.  Using Rubicon Reformat script."
-        $JmeterScriptdir/RubiconRichMediaReformat.sh $line
+        ./RubiconRichMediaReformat.sh $line
 else
 
 OpenX=$(grep OpenX $line)
 if [ $? -eq 0 ]
 then
         echo "Found OpenX Response.  Using OpenX Reformat script."
-        $JmeterScriptdir/OpenXReformat.sh $line
+        ./OpenXReformat.sh $line
 else
 
 Vdopia=$(grep Vdopia $line)
 if [ $? -eq 0 ]
 then
 echo "Found Vdopia Response.  Using Vdopia Reformat script."
-        $JmeterScriptdir/VdopiaReformat.sh $line
+        ./VdopiaReformat.sh $line
+
+else
+
+LKQD=$(grep LKQD $line)
+if [ $? -eq 0 ]
+then
+echo "Found LKQD Response.  Using Vdopia Reformat script."
+        ./LKQDReformat.sh $line
+
+else
+
+AdX=$(grep AdX $line)
+if [ $? -eq 0 ]
+then
+        ./AdXReformat.sh $line
 
 fi
 fi
@@ -152,7 +168,10 @@ fi
 fi
 fi
 fi
+fi
+fi
 
-done < responses
-rm count responses
+
+done < newresponses
+rm count newresponses
 
